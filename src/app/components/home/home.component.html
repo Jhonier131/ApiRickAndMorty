@@ -1,0 +1,26 @@
+<div class="formSearch">
+  <form [formGroup]="formSearch" (ngSubmit)="submit()">
+    <input type="text" placeholder="Search.." formControlName="name">
+    <button type="sumbit">Search</button>
+  </form>
+</div>
+<div>
+<h1 class="title">CHARACTERS</h1>
+</div>
+<main>
+  <article *ngFor="let item of arrayData.results" [routerLink]="['/detalle', item.id]">
+    <div class="img-container" >
+      <img src="{{item.image}}" alt="">
+    </div>
+    <div class="description">
+      <h2>{{item.name}}</h2>
+      <span>{{item.status}}</span>
+    </div>
+  </article>
+</main>
+
+<div class="container btnCurrentPage">
+  <button (click)="prevPage()" class="btns-pages">prev</button>
+  <label>{{currentPage}}</label>
+  <button (click)="changePage()" class="btns-pages">next</button>
+</div>
